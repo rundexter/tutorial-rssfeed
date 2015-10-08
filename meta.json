@@ -1,26 +1,24 @@
-/*
- * Metadata describing the module operation
- */
 {
-    //Required. Inputs the module expects.
     "inputs": [
-        //e.g.
-        /*
         {
-            "id": "from",
-            "title":"From",
+            "id": "url",
+            "title":"Feed URL"
         }
-        */
-    ],
-    //Required. Outputs the module emits.
+    ],  
     "outputs": [
-      //e.g.
-      /*
         {
-            "id": "from",
-            "title":"From",
+            "id": "url",
+            "title":"Article URL"
+        }, {
+            "id": "title",
+            "title":"Article title"
+        }, {
+            "id": "summary",
+            "title":"Article summary"
+        }, {
+            "id": "author",
+            "title":"Author"
         }
-      */
-    ],
-    "title": "RSS Parser Tutorial" /* Required.A display name for the module */
+    ], 
+    "title": "RSS Parser Tutorial"
 }
