@@ -1,5 +1,6 @@
 var _ = require('lodash'),
-    request = require('request');
+    request = require('request'),
+    FeedParser = require('feedparser');
 module.exports = {
     run: function(step, dexter) {
     },
@@ -14,5 +15,23 @@ module.exports = {
             }
             return callback(null, this);
         });
+    },
+    fetchItems: function(stream, callback) {
+        var parser = new FeedParser()
+            , items = [];
+        parser.on('error', callback);
+        parser.on('end', function(err) {
+            if(err) {
+                return callback(err);
+            }
+            return callback(null, items);
+        });
+        parser.on('readable', function() {
+            var item;
+            while((item = this.read())) {
+                items.push(item);
+            }
+        });
+        stream.pipe(parser);
     }
 };
