@@ -1,0 +1,12 @@
+{
+    "name": "rss-parser-tutorial",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "author": "Justin Fargione",
+    "license": "ISC",
+    "private": true,
+    "dependencies": {
+        "lodash": "^3.9.3"
+    }
+}
