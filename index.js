@@ -12,6 +12,28 @@ module.exports = {
             //  url to work with, so we'll roll on.
             return this.complete();
         }
+        this.fetchUrl(url, function(err, stream) {
+            if(err) {
+                return self.fail(err);
+            }
+            //Let the parser grab the data
+            self.fetchItems(stream, function(err, items) {
+                var response = [];
+                if(err) {
+                    return self.fail(err);
+                }
+                //Extract dexter-friendly data from the items
+                _.each(items, function(item) {
+                    response.push({
+                        url: item.link,
+                        title: item.title,
+                        summary: item.summary,
+                        author: item.author
+                    });
+                });
+                return self.complete(response);
+            });
+        });
     },
     fetchUrl: function(url, callback) {
         var req = request(url);
