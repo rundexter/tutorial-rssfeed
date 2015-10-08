@@ -3,6 +3,15 @@ var _ = require('lodash'),
     FeedParser = require('feedparser');
 module.exports = {
     run: function(step, dexter) {
+        var url = step.input('url').first(),
+            filter = step.input('filter').first(),
+            self = this;
+        if(!url) {
+            this.log('No url provided, returing to App');
+            //It's not really a critical failure to not have an 
+            //  url to work with, so we'll roll on.
+            return this.complete();
+        }
     },
     fetchUrl: function(url, callback) {
         var req = request(url);
