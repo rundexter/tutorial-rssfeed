@@ -31,6 +31,9 @@ module.exports = {
                         author: item.author
                     });
                 });
+                if(filter) {
+                    response = self.filterItems(response, filter);
+                }
                 return self.complete(response);
             });
         });
@@ -64,5 +67,18 @@ module.exports = {
             }
         });
         stream.pipe(parser);
+    },
+    filterItems: function(items, term) {
+        var response = []
+            , lcTerm = term.toLowerCase();
+        _.each(items, function(item) {
+            _.forIn(item, function(val) {
+                if(val.toLowerCase().indexOf(lcTerm) >= 0) {
+                    response.push(item);
+                    return false;
+                }
+            });
+        });
+        return response;
     }
 };

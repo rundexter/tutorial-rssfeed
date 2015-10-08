@@ -3,6 +3,9 @@
         {
             "id": "url",
             "title":"Feed URL"
+        }, {
+            "id": "filter",
+            "title":"Text filter"
         }
     ],  
     "outputs": [

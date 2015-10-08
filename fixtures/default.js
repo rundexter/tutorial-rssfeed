@@ -62,7 +62,8 @@ module.exports = _.merge({
              * You should update this section with some test input for testing your module
              */
             input: {
-                url: 'http://feeds.arstechnica.com/arstechnica/index/'
+                url: 'http://feeds.arstechnica.com/arstechnica/index/',
+                filter: 'apple'
             }
         }
     }
